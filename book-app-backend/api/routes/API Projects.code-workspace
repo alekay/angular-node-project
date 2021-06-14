@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../API Development"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
