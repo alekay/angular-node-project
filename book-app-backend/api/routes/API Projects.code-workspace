@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../.."
+		},
+		{
+			"path": "../../../../API_plus_database_app"
 		}
 	],
 	"settings": {

@@ -7,4 +7,5 @@ function onRequest(request, response) {
   response.end();
 }
 
+// TODO update syntax
 http.createServer(onRequest).listen(3000);
