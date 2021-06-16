@@ -1,6 +1,6 @@
 // brign in express, mongoose, bcrpt
 const express = require('express');
-const router = express.router();
+const router = express.Router();
 
 const mongoose = require('mongoose');
 
@@ -15,7 +15,7 @@ const jwt = require('jsonwebtoken');
 // route for sign-uo
 router.post('/signup', (req, res, next) => {
   // checking if the email already exists
-  console.log('req.body.email')
+  console.log(req.body.email)
   User.find({ email: req.body.email })
   .exec().then(user => {
     // checking if the user exists
@@ -58,8 +58,8 @@ router.post('/signup', (req, res, next) => {
 })
 
 // add admin sign-up, uses 
-router.post('/admin/signup', (req, res, next => {
-  console.log('req.body.email')
+router.post('/admin/signup', (req, res, next) => {
+  console.log(req.body.email)
   User.find({ email: req.body.email })
   .exec().then(user => {
     if (user.lenght >=1) {
@@ -97,10 +97,10 @@ router.post('/admin/signup', (req, res, next => {
       })
     }
   })
-}))
+})
 
 // user routing for log on
-router.post('/login', (req, res, next => {
+router.post('/login', (req, res, next) => {
   console.log(req.body.email)
   console.log(req.body.password)
   User.find({ email: req.body.email })
@@ -145,7 +145,7 @@ router.post('/login', (req, res, next => {
       error: err
     });
   });
-}));
+});
 
 // export the module
 module.exports = router;
