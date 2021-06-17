@@ -9,8 +9,9 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 
 // import from MongoDB Atlas
+// TODO fix API connection
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://alekay:<password>@cluster0.kclkf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://alekay:mastadon@cluster0.kclkf.mongodb.net/Angular-nodeJS-Server?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
