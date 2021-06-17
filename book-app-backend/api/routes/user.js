@@ -101,10 +101,10 @@ router.post('/admin-signup', (req, res, next) => {
 
 // user routing for log on
 router.post('/login', (req, res, next) => {
-  console.log("BE-user.js - starting login()");
+  console.log('BE-user.js - starting login()');
   console.log(req.body.email);
   console.log(req.body.password);
-  User.find({email:req.body.email})
+  User.find({ email: req.body.email })
   .exec()
   // we have a new user, do something
   .then(user => {
@@ -127,7 +127,7 @@ router.post('/login', (req, res, next) => {
           userID: user[0]._id
         },
         'secret', {
-          expiresIn:"1h"
+          expiresIn: '1h'
         }
         )
         return res.status(200).json({
@@ -137,12 +137,12 @@ router.post('/login', (req, res, next) => {
         });
       }
       res.status(401).json({
-        mesasge: "Auth Failure"
+        mesasge: 'Auth Failure'
       });
     })
   })
   .catch(err => {
-    console.log("BE-user.js - error in login()");
+    console.log('BE-user.js - error in login()');
       res.status(500).json({
         error: err
       });
