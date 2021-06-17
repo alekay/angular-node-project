@@ -16,7 +16,7 @@ router.get('/all-books', checkAuth, (req, res, next) => {
           title: doc.title,
           author: doc.author,
           _id: doc._id,
-          isbin: doc.isbin,
+          isbn: doc.isbn,
           price: doc.price,
         };
       })
@@ -41,7 +41,7 @@ router.get('/book-details/:bookId', checkAuth, (req,res,next) => {
         return {
           title: doc.title,
           author: doc.author,
-          _id:doc.id,
+          _id: doc.id,
           isbn: doc.isbn,
           price:doc.price,
         };
@@ -52,7 +52,7 @@ router.get('/book-details/:bookId', checkAuth, (req,res,next) => {
   .catch(err => {
     console.log(err);
     res.status(500).jsonn({
-      error:err
+      error: err
     });
   });
 });
@@ -61,23 +61,23 @@ router.get('/book-details/:bookId', checkAuth, (req,res,next) => {
 router.post('/add-book', checkAuth, (req, res, next) => {
   const book = new Book({
     _id: new mongoose.Types.ObjectId(),
-    title:req.body.title,
-    author:req.body.author,
-    isbn:req.body.isbn,
-    price:req.body.price,
+    title: req.body.title,
+    author: req.body.author,
+    isbn: req.body.isbn,
+    price: req.body.price,
   });
   book
   .save()
   .then(result => {
     console.log(result);
     res.status(201).json({
-      message:"book successfully added",
+      message: 'book successfully added',
     });
   })
   .catch(err => {
     console.log(err);
     res.status(500).json( {
-      error:err
+      error: err
     });
   });
 });
@@ -88,17 +88,17 @@ router.patch('/update-book/:bookId', checkAuth, (req, res, next) => {
   const updateOps = {}
   console.log(req.body);
 
-  Book.update({_id:id}, {$set:req.body})
+  Book.update({_id: id}, {$set: req.body})
   .exec()
   .then(result => {
     res.status(200).jason({
-      message: "Book Updated"
+      message: 'Book Updated'
     });
   })
   .catch(err => {
     console.log(err);
     res.status(500).json({
-      error:err
+      error: err
     });
   });
 });
@@ -107,16 +107,16 @@ router.patch('/update-book/:bookId', checkAuth, (req, res, next) => {
 router.delete('/delete-book/:bookId', checkAuth, (req, res, next) => {
   const id = req.params.bookId;
   console.log(id);
-  Book.remove({_id:id})
+  Book.remove({_id: id})
   .exec()
   .then(result => {
     res.status(200).json({
-      message: "Book Deletet",
+      message: 'Book Deleted',
     });
   })
   .catch(err => {
     res.status(500).json({
-      error:err
+      error: err
     });
   });
 });
