@@ -37,4 +37,5 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# Ignore app.js - app.js contains sensitive information about MongoDB Atlas URI, and DB credentials
 app.js
