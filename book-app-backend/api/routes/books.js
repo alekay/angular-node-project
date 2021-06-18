@@ -88,6 +88,7 @@ router.patch('/update-book/:bookId', checkAuth, (req, res, next) => {
   const updateOps = {}
   console.log(req.body);
 
+  // TODO update deprecated - updateOne or updateMany instead.
   Book.update({_id: id}, {$set: req.body})
   .exec()
   .then(result => {
